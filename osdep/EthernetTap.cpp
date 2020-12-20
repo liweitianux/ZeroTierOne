@@ -39,17 +39,13 @@
 #include "WindowsEthernetTap.hpp"
 #endif // __WINDOWS__
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__OpenBSD__)
 #include "BSDEthernetTap.hpp"
-#endif // __FreeBSD__
+#endif
 
 #ifdef __NetBSD__
 #include "NetBSDEthernetTap.hpp"
 #endif // __NetBSD__
-
-#ifdef __OpenBSD__
-#include "BSDEthernetTap.hpp"
-#endif // __OpenBSD__
 
 #endif
 
@@ -129,17 +125,13 @@ std::shared_ptr<EthernetTap> EthernetTap::newInstance(
 	return std::shared_ptr<EthernetTap>(new WindowsEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __WINDOWS__
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__OpenBSD__)
 	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
-#endif // __FreeBSD__
+#endif
 
 #ifdef __NetBSD__
 	return std::shared_ptr<EthernetTap>(new NetBSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __NetBSD__
-
-#ifdef __OpenBSD__
-	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
-#endif // __OpenBSD__
 
 #endif // ZT_SDK?
 

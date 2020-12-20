@@ -3035,7 +3035,7 @@ public:
 		}
 #endif
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__DragonFly__)
 		if ((ifname[0] == 'l') && (ifname[1] == 'o')) return false; // loopback
 		if ((ifname[0] == 'z') && (ifname[1] == 't')) return false; // sanity check: zt#
 #endif
