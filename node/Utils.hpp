@@ -25,7 +25,7 @@
 #include <vector>
 #include <map>
 
-#if defined(__FreeBSD__)
+#if defined(__FreeBSD__) || defined(__DragonFly__)
 #include <sys/endian.h>
 #endif
 

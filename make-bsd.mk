@@ -27,6 +27,9 @@ else
 	STRIP=strip --strip-all
 endif
 
+ifeq ($(ZT_DEBUG_TRACE),1)
+	DEFS+=-DZT_DEBUG_TRACE
+endif
 ifeq ($(ZT_TRACE),1)
 	DEFS+=-DZT_TRACE
 endif
